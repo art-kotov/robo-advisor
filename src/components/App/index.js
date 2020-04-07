@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MobXProviderContext, observer } from "mobx-react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { useTranslation } from "react-i18next";
 // Instruments
 import GlobalStyle from "../../theming/GlobalStyle";
 import theme from "../../theming/theme";
@@ -12,7 +13,7 @@ import "./App.css";
 
 function App() {
   const { uiStore } = useContext(MobXProviderContext);
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     document.documentElement.setAttribute("dir", uiStore.direction);
   }, [uiStore.direction]);
@@ -27,17 +28,20 @@ function App() {
               style={{
                 width: "100%",
               }}
-              onClick={() =>
+              onClick={() => {
                 uiStore.setDirection(
                   uiStore.direction === "rtl" ? "ltr" : "rtl"
-                )
-              }
+                );
+                i18n.changeLanguage(
+                  uiStore.direction === "rtl" ? "arab" : "en"
+                );
+              }}
             >
               switch
             </button>
             <div className="App">
               <header className="App-header">
-                <Title>Hello World!</Title>
+                <Title>{t("Welcome to React")}</Title>
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
                   Edit <code>src/Index.js</code> and save to reload.

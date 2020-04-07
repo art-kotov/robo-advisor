@@ -10,6 +10,7 @@ import App from "./components/App";
 import store from "./store/rootStore";
 // Instruments
 import "./index.css";
+import "./i18n";
 
 ReactDOM.render(
   <Provider {...store}>
