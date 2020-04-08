@@ -4,6 +4,7 @@ import styled from "styled-components";
 // Instruments
 import mainImage from "assets/images/main-screen.png";
 import logo from "assets/images/logo-white.svg";
+import { Trans } from "react-i18next";
 
 const TemplateEnter = ({ children }) => {
   return (
@@ -14,7 +15,9 @@ const TemplateEnter = ({ children }) => {
         </header>
       </div>
       <div>
-        <header>123</header>
+        <header>
+          <Trans>EN</Trans>
+        </header>
         {children}
         <footer>footer</footer>
       </div>

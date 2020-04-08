@@ -2,20 +2,22 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { MobXProviderContext, observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
 const AdminPanel = () => {
   const { uiStore, userStore } = useContext(MobXProviderContext);
-
+  const { i18n } = useTranslation();
   return (
     <Wrapper>
+      <button onClick={() => userStore.setStatus()}>STATUS</button>
       <button
-        onClick={() =>
-          uiStore.setDirection(uiStore.direction === "rtl" ? "ltr" : "rtl")
-        }
+        onClick={() => {
+          uiStore.setDirection(uiStore.direction === "rtl" ? "ltr" : "rtl");
+          i18n.changeLanguage(uiStore.direction === "rtl" ? "ar" : "en");
+        }}
       >
         LANG
       </button>
-      <button onClick={() => userStore.setStatus()}>STATUS</button>
     </Wrapper>
   );
 };
@@ -31,7 +33,7 @@ const Wrapper = styled.div`
   background-color: #282c34;
   padding: 10px;
   box-sizing: border-box;
-  opacity: 0.1;
+  opacity: 0.2;
   z-index: 999;
   button {
     display: flex;

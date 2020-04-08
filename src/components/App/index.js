@@ -11,7 +11,6 @@ import "./App.css";
 import AdminPanel from "components/AdminPanel";
 import PrivateRoute from "routes/PrivateRoute";
 import PublicRoute from "routes/PublicRoute";
-import BaseButton from "../base/BaseButton";
 
 function App() {
   const { uiStore, userStore } = useContext(MobXProviderContext);
@@ -27,7 +26,6 @@ function App() {
           <>
             <GlobalStyle whiteColor />
             <AdminPanel />
-            <BaseButton classname={123} text="" />
             {userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}
           </>
         </ThemeProvider>
