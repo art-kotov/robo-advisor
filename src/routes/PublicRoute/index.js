@@ -2,11 +2,7 @@ import React from "react";
 import TemplateEnter from "templates/TemplateEnter";
 
 const PublicRoute = () => {
-  return (
-    <TemplateEnter>
-      <h1>ENTER</h1>
-    </TemplateEnter>
-  );
+  return <TemplateEnter>Sign Up Sign In KYC</TemplateEnter>;
 };
 
 export default PublicRoute;

@@ -7,9 +7,11 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../../theming/GlobalStyle";
 import theme from "../../theming/theme";
 import "./App.css";
-import AdminPanel from "../AdminPanel";
-import PrivateRoute from "../../screens/PrivateRoute";
-import PublicRoute from "../../screens/PublicRoute";
+// Components
+import AdminPanel from "components/AdminPanel";
+import PrivateRoute from "routes/PrivateRoute";
+import PublicRoute from "routes/PublicRoute";
+import BaseButton from "../base/BaseButton";
 
 function App() {
   const { uiStore, userStore } = useContext(MobXProviderContext);
@@ -25,6 +27,7 @@ function App() {
           <>
             <GlobalStyle whiteColor />
             <AdminPanel />
+            <BaseButton classname={123} text="" />
             {userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}
           </>
         </ThemeProvider>

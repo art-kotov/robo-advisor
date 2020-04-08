@@ -13,7 +13,11 @@ const TemplateEnter = ({ children }) => {
           <img src={logo} alt="Robo Advisor" />
         </header>
       </div>
-      <div>{children}</div>
+      <div>
+        <header>123</header>
+        {children}
+        <footer>footer</footer>
+      </div>
     </Wrapper>
   );
 };
