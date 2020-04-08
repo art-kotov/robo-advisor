@@ -1,17 +1,18 @@
 // Core
 import React, { useContext, useEffect } from "react";
-import styled from "styled-components";
 import { MobXProviderContext, observer } from "mobx-react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 // Instruments
 import GlobalStyle from "../../theming/GlobalStyle";
 import theme from "../../theming/theme";
-import logo from "../../logo.svg";
 import "./App.css";
+import AdminPanel from "../AdminPanel";
+import PrivateRoute from "../../screens/PrivateRoute";
+import PublicRoute from "../../screens/PublicRoute";
 
 function App() {
-  const { uiStore } = useContext(MobXProviderContext);
+  const { uiStore, userStore } = useContext(MobXProviderContext);
 
   useEffect(() => {
     document.documentElement.setAttribute("dir", uiStore.direction);
@@ -23,53 +24,13 @@ function App() {
         <ThemeProvider theme={{ ...theme, direction: uiStore.direction }}>
           <>
             <GlobalStyle whiteColor />
-            <button
-              style={{
-                width: "100%",
-              }}
-              onClick={() =>
-                uiStore.setDirection(
-                  uiStore.direction === "rtl" ? "ltr" : "rtl"
-                )
-              }
-            >
-              switch
-            </button>
-            <div className="App">
-              <header className="App-header">
-                <Title>Hello World! 1234567890</Title>
-                <Title>
-                  ٢٣-٣٥٤٣٥ ﻢﻗر<>2020</> ﺔﻴﻟﺎﻤﻟا قﻮﺴﻟا ﺔﺌﻴﻫ ﺺﻴﺧﺮﺗ
-                </Title>
-                <input type="text" />
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/Index.js</code> and save to reload.
-                </p>
-
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React!
-                </a>
-              </header>
-            </div>
+            <AdminPanel />
+            {userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}
           </>
         </ThemeProvider>
       </Router>
     </React.StrictMode>
   );
 }
-
-const Title = styled.span`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-  direction: ${(props) => props.theme.direction};
-  ${(props) => props.theme.getLeftPosition()}: 20px;
-`;
 
 export default observer(App);
