@@ -37,11 +37,16 @@ function App() {
             </button>
             <div className="App">
               <header className="App-header">
-                <Title>Hello World!</Title>
+                <Title>Hello World! 1234567890</Title>
+                <Title>
+                  ٢٣-٣٥٤٣٥ ﻢﻗر<>2020</> ﺔﻴﻟﺎﻤﻟا قﻮﺴﻟا ﺔﺌﻴﻫ ﺺﻴﺧﺮﺗ
+                </Title>
+                <input type="text" />
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
                   Edit <code>src/Index.js</code> and save to reload.
                 </p>
+
                 <a
                   className="App-link"
                   href="https://reactjs.org"
@@ -59,7 +64,7 @@ function App() {
   );
 }
 
-const Title = styled.h1`
+const Title = styled.span`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
