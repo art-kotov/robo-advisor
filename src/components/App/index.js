@@ -27,6 +27,7 @@ function App() {
             <GlobalStyle whiteColor />
             <AdminPanel />
             {userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}
+            {/*{true ? <PrivateRoute /> : <PublicRoute />}*/}
           </>
         </ThemeProvider>
       </Router>

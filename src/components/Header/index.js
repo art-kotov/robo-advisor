@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 //Instruments
-import homeIcon from "../../assets/images/home-icon.svg";
+import homeIcon from "../../assets/images/home-header.svg";
 import bellIcon from "../../assets/images/bell-icon.svg";
 
 //Components

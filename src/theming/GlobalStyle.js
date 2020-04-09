@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --c-white: #FFFFFF;
     --c-blue: #1D6AE5;
     --с-gray-light: #F3F4F8;
+    --с-gray-light-opacity: rgba(243, 244, 248, 0.3);
     --с-gray-dark: #30363D;
     --c-purple: #945DFF;
   }
