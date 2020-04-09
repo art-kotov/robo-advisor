@@ -2,35 +2,28 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 // Components
-import EnterHeader from "../../components/EnterHeader";
+import TemplateEnter from "../../templates/TemplateEnter";
+import EnterSignUpForm from "../../components/EnterSignUpForm";
+import EnterSignInForm from "../../components/EnterSignInForm";
 
 const PublicRoute = () => {
   return (
-    <>
-      <EnterHeader />
+    <TemplateEnter>
       <Switch>
         <Route path="/sign-up">
-          <Home />
+          <EnterSignUpForm />
         </Route>
         <Route path="/sign-in">
-          <About />
+          <EnterSignInForm />
         </Route>
-        <Route path="/kyc">
+        <Route path="/survey">
           <Users />
         </Route>
         <Redirect to="/sign-up" />
       </Switch>
-    </>
+    </TemplateEnter>
   );
 };
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
 
 function Users() {
   return <h2>Users</h2>;

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { MobXProviderContext, observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 
 const AdminPanel = () => {
   const { uiStore, userStore } = useContext(MobXProviderContext);
@@ -18,6 +19,9 @@ const AdminPanel = () => {
       >
         LANG
       </button>
+      <NavLink to="/sign-in">Sign In</NavLink>
+      <NavLink to="/sign-up">Sign Up</NavLink>
+      <NavLink to="/survey">Sign Survey</NavLink>
     </Wrapper>
   );
 };
@@ -25,16 +29,19 @@ const AdminPanel = () => {
 const Wrapper = styled.div`
   position: absolute;
   left: 0;
-  top: 0;
+  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
   direction: ltr;
-  background-color: #282c34;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 10px;
   box-sizing: border-box;
-  opacity: 0.2;
   z-index: 999;
+  a {
+    color: red;
+    margin: 5px;
+  }
   button {
     display: flex;
     justify-content: center;
