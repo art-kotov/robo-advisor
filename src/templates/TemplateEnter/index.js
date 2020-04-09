@@ -2,25 +2,21 @@
 import React from "react";
 import styled from "styled-components";
 // Instruments
-import mainImage from "assets/images/main-screen.png";
 import logo from "assets/images/logo-white.svg";
-import { Trans } from "react-i18next";
 
 const TemplateEnter = ({ children }) => {
   return (
     <Wrapper>
-      <div className="bg-image">
-        <header>
-          <img src={logo} alt="Robo Advisor" />
-        </header>
-      </div>
-      <div>
-        <header>
-          <Trans>EN</Trans>
-        </header>
-        {children}
-        <footer>footer</footer>
-      </div>
+      <header className="header">
+        <div className="header-start">
+          <span>Sign Up</span>
+        </div>
+        <div className="header-end">
+          <img src={logo} alt="robo advisor" />
+        </div>
+      </header>
+      <main>{children}</main>
+      <footer></footer>
     </Wrapper>
   );
 };
@@ -30,18 +26,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  .bg-image {
-    header {
-      height: 80px;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      padding-inline-end: 73px;
-      background-color: #1d6ae5;
-    }
-    background: url(${mainImage}) no-repeat left 80px;
-    background-size: cover;
-  }
+  grid-template-rows: 80px 1fr auto;
 `;
 
 export default TemplateEnter;
