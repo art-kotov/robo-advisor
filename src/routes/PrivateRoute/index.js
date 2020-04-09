@@ -6,7 +6,7 @@ import TemplateBase from "../../templates/TemplateBase";
 const PrivateRoute = () => {
   return (
     <TemplateBase>
-      <h1>PRIVATE</h1>
+      <h1>Main Children</h1>
     </TemplateBase>
   );
 };

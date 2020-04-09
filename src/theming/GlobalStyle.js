@@ -4,6 +4,14 @@ import { createGlobalStyle } from "styled-components";
 import { Thameen_Book, Thameen_DemiBold, Thameen_Light } from "assets/fonts";
 
 const GlobalStyle = createGlobalStyle`
+  // colors
+:root {
+    --c-white: #FFFFFF;
+    --c-blue: #1D6AE5;
+    --с-gray-light: #F3F4F8;
+    --с-gray-dark: #30363D;
+    --c-purple: #945DFF;
+  }
   @font-face {
      font-family: "Thameen";
      src:

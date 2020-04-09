@@ -30,7 +30,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   direction: ltr;
-  background-color: #282c34;
   padding: 10px;
   box-sizing: border-box;
   opacity: 0.2;
