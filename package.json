@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "formik": "^2.1.4",
     "husky": "^4.2.3",
     "i18next": "^19.3.4",
     "lint-staged": "^10.1.2",
@@ -52,7 +53,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "eslint src/ --max-warnings=0",
       "prettier --write"
     ]

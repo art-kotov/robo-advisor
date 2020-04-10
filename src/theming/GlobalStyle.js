@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
  input, text-num {
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
  }
+
 `;
 
 export default GlobalStyle;

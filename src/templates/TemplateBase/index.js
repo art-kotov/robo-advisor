@@ -139,6 +139,7 @@ const StyledUl = styled.ul`
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
+  align-items: center;
   text-decoration: none;
   padding-inline-start: 25px;
   padding-inline-end: 25px;
