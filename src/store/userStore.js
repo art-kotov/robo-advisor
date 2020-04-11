@@ -38,7 +38,7 @@ const userStore = model("userStore", {
       self.serverErrors = {};
     },
     // Async
-    register: flow(function* (data) {
+    register: flow(function* (data, push) {
       self.setLoading(true);
       self.clearServerErrors();
       try {
@@ -47,17 +47,19 @@ const userStore = model("userStore", {
           ...data,
           phone: globalPhone,
         });
-        console.log("response", response);
+        console.log(response);
         if (response.status === 400) {
           self.setServerErrors(response.data);
         }
-
+        if (response.status === 201) {
+          push("/survey");
+        }
         // localStorage.setItem("token", response.data.token);
         // self.removeErrorMessage();
       } catch (e) {
         console.error(e);
       } finally {
-        // self.setLoading(false);
+        self.setLoading(false);
       }
     }),
     // logIn: flow(function* logIn(data) {

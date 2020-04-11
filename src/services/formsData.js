@@ -4,7 +4,7 @@ import { object, string } from "yup";
 export const signUpForm = {
   initialValues: {
     phone: "0511111111",
-    password: "qwerty123",
+    password: "Bloodbowl108Q",
   },
   validationSchema: object().shape({
     phone: string()

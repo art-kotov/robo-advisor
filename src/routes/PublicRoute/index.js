@@ -20,7 +20,7 @@ const PublicRoute = () => {
         <Route path="/survey">
           <KYCForm />
         </Route>
-        <Redirect to="/sign-up" />
+        <Redirect to="/sign-in" />
       </Switch>
     </TemplateEnter>
   );

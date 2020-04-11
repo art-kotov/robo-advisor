@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { Formik, Form } from "formik";
 import { Trans, withTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { MobXProviderContext, observer } from "mobx-react";
 // Instruments
@@ -17,6 +17,8 @@ import BaseServerErrorMessage from "../base/BaseServerErrorMessage";
 
 const EnterSignUpForm = () => {
   const { userStore } = useContext(MobXProviderContext);
+  const { push } = useHistory();
+
   return (
     <>
       <Formik
@@ -25,7 +27,7 @@ const EnterSignUpForm = () => {
         validateOnBlur={false}
         validateOnChange={false}
         onSubmit={async (values) => {
-          userStore.register(values);
+          userStore.register(values, push);
         }}
       >
         {({ isSubmitting }) => (
