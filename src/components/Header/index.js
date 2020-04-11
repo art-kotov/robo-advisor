@@ -1,7 +1,8 @@
 // Core
-
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { MobXProviderContext, observer } from "mobx-react";
 import styled from "styled-components";
+import { Trans } from "react-i18next";
 
 //Instruments
 import homeIcon from "../../assets/images/home-header.svg";
@@ -11,23 +12,39 @@ import bellIcon from "../../assets/images/bell-icon.svg";
 import BaseButton from "../base/BaseButton";
 
 const Header = () => {
+  const { uiStore } = useContext(MobXProviderContext);
+  //to update component to see the translation
+  const dir = uiStore.direction;
+  const dunpFunction = () => {
+    if (dir) {
+      return;
+    } else {
+      return;
+    }
+  };
+  useEffect(() => {
+    dunpFunction();
+  });
+  // the end
   return (
     <WrapperHeader>
       <HeaderStart>
         <img src={homeIcon} alt="Home" />
-        <LocationText>الرئيسية</LocationText>
+        <LocationText>
+          <Trans i18nKey="home.home" />
+        </LocationText>
       </HeaderStart>
       <HeaderEnd>
         <StyledImg src={bellIcon} alt="Bell" />
         <BaseButton withShadow minWidth="116px">
-          ايداع
+          <Trans i18nKey="home.deposit" />
         </BaseButton>
       </HeaderEnd>
     </WrapperHeader>
   );
 };
 
-export default Header;
+export default observer(Header);
 
 const WrapperHeader = styled.header`
   background-color: var(-—c-white);
