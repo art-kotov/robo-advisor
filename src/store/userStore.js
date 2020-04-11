@@ -2,6 +2,7 @@
 import { flow, types } from "mobx-state-tree";
 // Instruments
 import { api } from "../services/api";
+import { removeProperty } from "../instruments";
 
 const { model, array, string, optional } = types;
 
@@ -62,25 +63,33 @@ const userStore = model("userStore", {
         self.setLoading(false);
       }
     }),
-    // logIn: flow(function* logIn(data) {
-    //   self.toggleLoading();
-    //   try {
-    //     const response = yield api.user.logIn(data);
-    //
-    //     if (response.status === 400) {
-    //       self.loginErrorMessage = response.data.non_field_errors[0];
-    //       throw new Error("login failed");
-    //     }
-    //
-    //     localStorage.setItem("token", response.data.token);
-    //     self.isUserLogged = true;
-    //     self.removeErrorMessage();
-    //   } catch (e) {
-    //     console.error(e);
-    //   } finally {
-    //     self.toggleLoading();
-    //   }
-    // }),
+    signIn: flow(function* logIn(data) {
+      self.setLoading(true);
+      self.clearServerErrors();
+      try {
+        const globalPhone = "+966" + data.phone.slice(1);
+        const removeRemember = removeProperty("remember");
+
+        const response = yield api.account.signIn({
+          ...removeRemember(data),
+          phone: globalPhone,
+        });
+        console.log(response);
+
+        if (response.status === 400) {
+          self.setServerErrors(response.data);
+        }
+        if (response.status === 200) {
+          self.clearServerErrors();
+          localStorage.setItem("token", response.data.token);
+          self.isUserLogged = true;
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        self.setLoading(false);
+      }
+    }),
   }));
 
 export default userStore;

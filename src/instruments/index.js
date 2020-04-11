@@ -3,3 +3,5 @@ export const delay = (duration = 1000) => {
     setTimeout(() => resolve("A resolved promise"), duration);
   });
 };
+
+export const removeProperty = (prop) => ({ [prop]: _, ...rest }) => rest;

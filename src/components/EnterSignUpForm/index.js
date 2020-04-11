@@ -30,7 +30,7 @@ const EnterSignUpForm = () => {
           userStore.register(values, push);
         }}
       >
-        {({ isSubmitting }) => (
+        {() => (
           <Form>
             <BaseFormGroup>
               <BaseFormLabel htmlFor="phone">
@@ -56,7 +56,7 @@ const EnterSignUpForm = () => {
                 fieldName="password"
               />
             </BaseFormGroup>
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit">
               <Trans i18nKey="signUp.signUp" />
             </button>
           </Form>

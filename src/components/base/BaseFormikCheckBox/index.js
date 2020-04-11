@@ -2,16 +2,18 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
 
-const BaseFormikCheckBox = ({ type, name, value, setFieldValue }) => {
+const BaseFormikCheckBox = ({ type, name }) => {
+  const { values, setFieldValue } = useFormikContext();
+  console.log("v", values);
   return (
     <Wrapper>
       <Field
         type={type}
         name={name}
         id={name}
-        checked={value}
+        checked={values[name]}
         onChange={(e) => {
           setFieldValue(name, e.target.checked);
         }}
@@ -19,7 +21,7 @@ const BaseFormikCheckBox = ({ type, name, value, setFieldValue }) => {
       <div
         className="checkmark"
         onClick={() => {
-          setFieldValue(name, !value);
+          setFieldValue(name, !values[name]);
         }}
       />
     </Wrapper>
@@ -29,7 +31,6 @@ const BaseFormikCheckBox = ({ type, name, value, setFieldValue }) => {
 BaseFormikCheckBox.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.bool.isRequired,
 };
 
 const Wrapper = styled.div`

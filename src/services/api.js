@@ -44,5 +44,12 @@ export const api = {
         data: data,
         remove_token: true,
       }),
+    signIn: (data) =>
+      ax({
+        method: "POST",
+        url: "/account/sign-in/",
+        data: data,
+        remove_token: true,
+      }),
   },
 };
