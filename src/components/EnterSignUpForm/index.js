@@ -1,43 +1,53 @@
 // Core
 import React from "react";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+// Instruments
+import { signUpForm } from "../../services/formsData";
 // Components
 import BaseFormikInput from "../base/BaseFormikInput";
 import BaseFormLabel from "../base/BaseFormLabel";
 import BaseFormGroup from "../base/BaseFormGroup";
+import BaseFormErrorMessage from "../base/BaseFormErrorMessage";
+import BaseFormInputMask from "../base/BaseFormInputMask";
 
 const EnterSignUpForm = () => {
   return (
     <>
       <Formik
-        initialValues={{
-          phone: "+375295555555",
-          password: "qwerty123",
-        }}
+        initialValues={signUpForm.initialValues}
+        validationSchema={signUpForm.validationSchema}
+        validateOnBlur={false}
+        validateOnChange={false}
         onSubmit={(values) => {
           console.log(values);
         }}
       >
-        {() => (
+        {({ values, isSubmitting }) => (
           <Form>
+            <pre>{JSON.stringify(values, null, 2)}</pre>
             <BaseFormGroup>
               <BaseFormLabel htmlFor="phone">
                 <Trans i18nKey="signUp.number" />
               </BaseFormLabel>
-              <BaseFormikInput name="phone" id="phone" />
-              <ErrorMessage name="phone" />
+              <BaseFormInputMask
+                name="phone"
+                lazy={false}
+                placeholderChar="x"
+                placeholder="Enter number here"
+              />
+              <BaseFormErrorMessage name="phone" />
             </BaseFormGroup>
             <BaseFormGroup>
               <BaseFormLabel htmlFor="password">
                 <Trans i18nKey="signUp.password" />
               </BaseFormLabel>
               <BaseFormikInput name="password" id="password" />
-              <ErrorMessage name="password" />
+              <BaseFormErrorMessage name="password" />
             </BaseFormGroup>
-            <button type="submit">
+            <button type="submit" disabled={isSubmitting}>
               <Trans i18nKey="signUp.signUp" />
             </button>
           </Form>

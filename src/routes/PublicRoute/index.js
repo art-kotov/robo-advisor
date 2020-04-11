@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import TemplateEnter from "../../templates/TemplateEnter";
 import EnterSignUpForm from "../../components/EnterSignUpForm";
 import EnterSignInForm from "../../components/EnterSignInForm";
+import KYCForm from "../../components/KYCForm";
 
 const PublicRoute = () => {
   return (
@@ -17,7 +18,7 @@ const PublicRoute = () => {
           <EnterSignInForm />
         </Route>
         <Route path="/survey">
-          <Users />
+          <KYCForm />
         </Route>
         <Redirect to="/sign-up" />
       </Switch>
@@ -25,7 +26,4 @@ const PublicRoute = () => {
   );
 };
 
-function Users() {
-  return <h2>Users</h2>;
-}
 export default PublicRoute;
