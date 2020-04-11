@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const baseUrl = process.env.API + "/api/v1";
-export const domainUrl = process.env.API;
+export const baseUrl = process.env.REACT_APP_API + "/api/v1";
+export const domainUrl = process.env.REACT_APP_API;
 const token = () => localStorage.getItem("token");
 
 export const ax = axios.create({
-  baseURL: process.env.API + "/api/v1",
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
     Authorization: `JWT ${token()}`,
@@ -18,6 +18,7 @@ ax.interceptors.request.use(function (config) {
   } else {
     config.headers.Authorization = `JWT ${token()}`;
   }
+  delete config.headers.Authorization;
   return config;
 });
 
@@ -34,4 +35,14 @@ ax.interceptors.response.use(
   }
 );
 
-export const api = {};
+export const api = {
+  account: {
+    register: (data) =>
+      ax({
+        method: "POST",
+        url: "/account/register/",
+        data: data,
+        remove_token: true,
+      }),
+  },
+};

@@ -1,9 +1,10 @@
 // Core
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form } from "formik";
-import { Trans } from "react-i18next";
+import { Trans, withTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { MobXProviderContext, observer } from "mobx-react";
 // Instruments
 import { signUpForm } from "../../services/formsData";
 // Components
@@ -12,8 +13,10 @@ import BaseFormLabel from "../base/BaseFormLabel";
 import BaseFormGroup from "../base/BaseFormGroup";
 import BaseFormErrorMessage from "../base/BaseFormErrorMessage";
 import BaseFormInputMask from "../base/BaseFormInputMask";
+import BaseServerErrorMessage from "../base/BaseServerErrorMessage";
 
 const EnterSignUpForm = () => {
+  const { userStore } = useContext(MobXProviderContext);
   return (
     <>
       <Formik
@@ -21,13 +24,12 @@ const EnterSignUpForm = () => {
         validationSchema={signUpForm.validationSchema}
         validateOnBlur={false}
         validateOnChange={false}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={async (values) => {
+          userStore.register(values);
         }}
       >
-        {({ values, isSubmitting }) => (
+        {({ isSubmitting }) => (
           <Form>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
             <BaseFormGroup>
               <BaseFormLabel htmlFor="phone">
                 <Trans i18nKey="signUp.number" />
@@ -39,6 +41,7 @@ const EnterSignUpForm = () => {
                 placeholder="Enter number here"
               />
               <BaseFormErrorMessage name="phone" />
+              <BaseServerErrorMessage storeName="userStore" fieldName="phone" />
             </BaseFormGroup>
             <BaseFormGroup>
               <BaseFormLabel htmlFor="password">
@@ -46,6 +49,10 @@ const EnterSignUpForm = () => {
               </BaseFormLabel>
               <BaseFormikInput name="password" id="password" />
               <BaseFormErrorMessage name="password" />
+              <BaseServerErrorMessage
+                storeName="userStore"
+                fieldName="password"
+              />
             </BaseFormGroup>
             <button type="submit" disabled={isSubmitting}>
               <Trans i18nKey="signUp.signUp" />
@@ -73,4 +80,4 @@ const AdditionalInfo = styled.div`
   border-top: 1px solid rgba(48, 54, 61, 0.3);
 `;
 
-export default EnterSignUpForm;
+export default withTranslation()(observer(EnterSignUpForm));

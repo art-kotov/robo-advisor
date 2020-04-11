@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ErrorMessage } from "formik";
 
 const BaseFormErrorMessage = styled(ErrorMessage)`
+  margin-top: 5px;
   color: red;
 `;
 
