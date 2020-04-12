@@ -14,6 +14,7 @@ import { signIpForm } from "../../services/formsData";
 import BaseFormInputMask from "../base/BaseFormInputMask";
 import BaseFormErrorMessage from "../base/BaseFormErrorMessage";
 import BaseServerErrorMessage from "../base/BaseServerErrorMessage";
+import BaseButton from "../base/BaseButton";
 
 const EnterSignInForm = () => {
   const { userStore } = useContext(MobXProviderContext);
@@ -61,12 +62,14 @@ const EnterSignInForm = () => {
                 <Trans i18nKey="signIn.rememberMe" />
               </label>
             </BlockCheckBox>
-            <button type="submit">
-              <Trans i18nKey="signIn.signIn" />
-            </button>
-            <Link to="/sign-up">
-              <Trans i18nKey="signIn.register" />
-            </Link>
+            <ButtonsWrapper>
+              <BaseButton type="submit" minWidth="115px">
+                <Trans i18nKey="signIn.signIn" />
+              </BaseButton>
+              <StyledLink to="/sign-up">
+                <Trans i18nKey="signIn.register" />
+              </StyledLink>
+            </ButtonsWrapper>
           </Form>
         )}
       </Formik>
@@ -80,6 +83,27 @@ const EnterSignInForm = () => {
   );
 };
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledLink = styled(Link)`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 190px;
+  line-height: 40px;
+  color: var(--c-blue);
+  text-decoration: none;
+  background-color: var(--c-white);
+  box-shadow: inset 0 0 0 1px var(--c-blue);
+  cursor: pointer;
+`;
+
 const AdditionalInfo = styled.div`
   margin-top: 30px;
   padding-top: 30px;
@@ -87,7 +111,7 @@ const AdditionalInfo = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  border-top: 1px solid rgba(48, 54, 61, 0.3);
+  border-top: 1px solid var(--с-gray-dark-opacity);
 `;
 
 const BlockCheckBox = styled.div`

@@ -2,7 +2,10 @@
   --c-white: #ffffff;
   --c-blue: #1d6ae5;
   --с-gray-light: #f3f4f8;
+  --с-gray-light-opacity: rgba(243, 244, 248, 0.3);
   --с-gray-dark: #30363d;
+  --с-gray-dark-opacity: rgba(48, 54, 61, 0.3);
+  --c-purple: #945dff;
 }
 
 @font-face {
@@ -20,7 +23,6 @@
   src: url("./assets/fonts/GE_Thameen_Light.otf") format("opentype");
   font-weight: 300;
 }
-
 
 html {
   line-height: 1.15; /* 1 */

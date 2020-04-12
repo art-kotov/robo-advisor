@@ -14,6 +14,7 @@ import BaseFormGroup from "../base/BaseFormGroup";
 import BaseFormErrorMessage from "../base/BaseFormErrorMessage";
 import BaseFormInputMask from "../base/BaseFormInputMask";
 import BaseServerErrorMessage from "../base/BaseServerErrorMessage";
+import BaseButton from "../base/BaseButton";
 
 const EnterSignUpForm = () => {
   const { userStore } = useContext(MobXProviderContext);
@@ -56,9 +57,9 @@ const EnterSignUpForm = () => {
                 fieldName="password"
               />
             </BaseFormGroup>
-            <button type="submit">
+            <StyledBaseButton type="submit" minWidth="190px">
               <Trans i18nKey="signUp.signUp" />
-            </button>
+            </StyledBaseButton>
           </Form>
         )}
       </Formik>
@@ -71,6 +72,10 @@ const EnterSignUpForm = () => {
     </>
   );
 };
+
+const StyledBaseButton = styled(BaseButton)`
+  margin-top: 15px;
+`;
 
 const AdditionalInfo = styled.div`
   margin-top: 30px;

@@ -4,6 +4,7 @@ import { Field } from "formik";
 
 const BaseFormikInput = styled(Field)`
   width: 100%;
+  box-sizing: border-box;
   line-height: 40px;
   padding-inline-start: 10px;
   outline: none;

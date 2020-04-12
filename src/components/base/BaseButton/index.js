@@ -1,42 +1,6 @@
 // Core
 import PropTypes from "prop-types";
-import React from "react";
 import styled from "styled-components";
-
-const BaseButton = ({
-  withBorder,
-  withShadow,
-  withRadius,
-  textColor,
-  backgroundColor,
-  minWidth,
-  children,
-}) => {
-  return (
-    <Button
-      textColor={textColor}
-      backgroundColor={backgroundColor}
-      minWidth={minWidth}
-      withRadius={withRadius}
-      withShadow={withShadow}
-      withBorder={withBorder}
-    >
-      {children}
-    </Button>
-  );
-};
-
-BaseButton.propTypes = {
-  minWidth: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  textColor: PropTypes.string,
-  withRadius: PropTypes.bool,
-  withShadow: PropTypes.bool,
-  withBorder: PropTypes.bool,
-  children: PropTypes.any.isRequired,
-};
-
-export default BaseButton;
 
 const chooseTextColor = (color) => {
   switch (color) {
@@ -66,7 +30,7 @@ const chooseBackgroundColor = (color) => {
   }
 };
 
-const Button = styled.button`
+const BaseButton = styled.button`
   height: 40px;
   background-color: ${(props) => chooseBackgroundColor(props.backgroundColor)};
   color: ${(props) => chooseTextColor(props.textColor)};
@@ -77,4 +41,22 @@ const Button = styled.button`
   box-shadow: ${(props) =>
     props.withShadow ? "1px 1px 1px rgba(0, 0, 0, 0.25)" : "unset"};
   border-radius: ${(props) => (props.withRadius ? "5px" : "unset")};
+  cursor: pointer;
 `;
+
+BaseButton.propTypes = {
+  minWidth: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  textColor: PropTypes.string,
+  type: PropTypes.string,
+  withRadius: PropTypes.bool,
+  withShadow: PropTypes.bool,
+  withBorder: PropTypes.bool,
+  children: PropTypes.any.isRequired,
+};
+
+BaseButton.defaultProps = {
+  type: "button",
+};
+
+export default BaseButton;

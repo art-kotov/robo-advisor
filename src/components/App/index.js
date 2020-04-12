@@ -11,7 +11,7 @@ import PrivateRoute from "routes/PrivateRoute";
 import PublicRoute from "routes/PublicRoute";
 
 function App() {
-  const { uiStore } = useContext(MobXProviderContext);
+  const { uiStore, userStore } = useContext(MobXProviderContext);
 
   useEffect(() => {
     document.documentElement.setAttribute("dir", uiStore.direction);
@@ -23,8 +23,8 @@ function App() {
         <ThemeProvider theme={{ ...theme, direction: uiStore.direction }}>
           <>
             <AdminPanel />
-            {/*{userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}*/}
-            {true ? <PrivateRoute /> : <PublicRoute />}
+            {userStore.userIsLogged ? <PrivateRoute /> : <PublicRoute />}
+            {/*{true ? <PrivateRoute /> : <PublicRoute />}*/}
           </>
         </ThemeProvider>
       </Router>

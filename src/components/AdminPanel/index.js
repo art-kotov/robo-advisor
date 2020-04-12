@@ -10,7 +10,8 @@ const AdminPanel = () => {
   const { i18n } = useTranslation();
   return (
     <Wrapper>
-      <button onClick={() => userStore.setStatus()}>STATUS</button>
+      <button onClick={() => userStore.setStatus(true)}>pr</button>
+      <button onClick={() => userStore.setStatus(false)}>pub</button>
       <button
         onClick={() => {
           uiStore.setDirection(uiStore.direction === "rtl" ? "ltr" : "rtl");

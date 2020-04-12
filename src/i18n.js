@@ -13,7 +13,7 @@ const resources = {
         password: "كلمة المرور",
         rememberMe: "تذكرني",
         forgotPassword: "نسيت كلمت المرور",
-        register: "لا يوجد لديك حساب؟ سجل الان",
+        register: "تسجيل",
       },
       signUp: {
         signUp: "التسجيل",
@@ -52,7 +52,7 @@ const resources = {
         password: "Password",
         rememberMe: "Remember me",
         forgotPassword: "Forgot Password",
-        register: "Not a Memeber? Register",
+        register: "Register",
       },
       signUp: {
         signUp: "Sign Up",

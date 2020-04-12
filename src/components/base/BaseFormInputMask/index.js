@@ -35,6 +35,7 @@ BaseFormInputMask.defaultProps = {
 
 const StyledInput = styled(IMaskInput)`
   width: 100%;
+  box-sizing: border-box;
   line-height: 40px;
   padding-inline-start: 10px;
   outline: none;
