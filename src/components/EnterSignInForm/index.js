@@ -99,7 +99,7 @@ const StyledLink = styled(Link)`
   line-height: 40px;
   color: var(--c-blue);
   text-decoration: none;
-  background-color: var(--c-white);
+  background-color: var(--с-gray-light);
   box-shadow: inset 0 0 0 1px var(--c-blue);
   cursor: pointer;
 `;

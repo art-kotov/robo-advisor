@@ -73,7 +73,8 @@ const Wrapper = styled.div`
     color: var(--c-blue);
   }
   .content {
-    max-width: 335px;
+    max-width: ${({ pathname }) =>
+      pathname === "/survey" ? "555px" : "335px"};
     padding-top: 100px;
     padding-inline-start: 103px;
     grid-area: 2/-1/3/2;
@@ -82,7 +83,6 @@ const Wrapper = styled.div`
     grid-area: 2/1/-1/2;
   }
   .footer {
-    //max-width: 335px;
     padding-inline-start: 103px;
     grid-area: 3/-1/-1/2;
   }

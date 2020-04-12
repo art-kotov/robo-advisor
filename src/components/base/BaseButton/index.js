@@ -52,7 +52,6 @@ BaseButton.propTypes = {
   withRadius: PropTypes.bool,
   withShadow: PropTypes.bool,
   withBorder: PropTypes.bool,
-  children: PropTypes.any.isRequired,
 };
 
 BaseButton.defaultProps = {
